@@ -9,6 +9,7 @@ import express, {
 } from "express";
 import cors from "cors";
 import { SampleRouter } from "./routers/sample.router";
+import { AuthRouter } from "./routers/auth.router";
 
 const PORT = 7070;
 
@@ -31,8 +32,10 @@ export default class App {
   // to define routes config from routers directory
   private routes(): void {
     const sampleRouter = new SampleRouter();
+    const authRouter = new AuthRouter();
 
     this.app.use("/samples", sampleRouter.getRouter());
+    this.app.use("/auth", authRouter.getRouter);
   }
 
   // Define error handling
