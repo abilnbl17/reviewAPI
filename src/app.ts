@@ -35,7 +35,7 @@ export default class App {
     const authRouter = new AuthRouter();
 
     this.app.use("/samples", sampleRouter.getRouter());
-    this.app.use("/auth", authRouter.getRouter);
+    this.app.use("/auth", authRouter.getRouter());
   }
 
   // Define error handling
