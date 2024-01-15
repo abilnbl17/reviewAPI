@@ -32,7 +32,7 @@ export const uploader = (filePrefix: string, folderName?: string) => {
       console.log("ORIGINAL FILE NAME", originalNameParts);
       const extention = originalNameParts[originalNameParts.length - 1]; // example : biar hasilnya "jpg"
       const newName = filePrefix + Date.now() + "." + extention;
-      console.log("NEW FILE NAME", newName);
+      console.log("NEW FILE NAME : ", newName);
 
       cb(null, newName);
     },
