@@ -8,7 +8,7 @@ import { join } from "path"; // digunakan untuk merge location file yang dituju
 // folderName menggunakan untuk merubah nama yang akan dibrikan ( ketika parameter diberikan tanda "?" boleh diisi atau tidak )
 export const uploader = (filePrefix: string, folderName?: string) => {
   // mendefine defaultDir
-  const defaultDir = join(__dirname, ".../../public"); // __dirname, mengarahkan file uploader dengan mengarahkannya ke public
+  const defaultDir = join(__dirname, "../../public"); // __dirname, mengarahkan file uploader dengan mengarahkannya ke public
   // mengarahkan ke directory file utama
 
   const configStorage = multer.diskStorage({

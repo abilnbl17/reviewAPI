@@ -16,7 +16,7 @@ export class SampleRouter {
     this.router.get("/", this.sampleController.getSample);
     this.router.post("/", this.sampleController.createSample);
     this.router.post(
-      "/uplod",
+      "/upload",
       uploader("IMG", "/image").single("gambar"),
       this.sampleController.addNewImage
     ); // upload diakses yang kita kirim yang dirubah fileprefix.img yang file itu cuma 1 yang diarahkan properti gambar
