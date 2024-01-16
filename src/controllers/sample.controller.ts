@@ -22,4 +22,13 @@ export class SampleController {
       return res.status(500).send(error);
     }
   }
+
+  async addMultipleImage(req: Request, res: Response) {
+    try {
+      console.log(req.files);
+    } catch (error: any) {
+      console.log(error);
+      return res.status(500).send(error);
+    }
+  }
 }

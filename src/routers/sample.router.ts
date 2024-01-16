@@ -20,6 +20,11 @@ export class SampleRouter {
       uploader("IMG", "/image").single("gambar"),
       this.sampleController.addNewImage
     ); // upload diakses yang kita kirim yang dirubah fileprefix.img yang file itu cuma 1 yang diarahkan properti gambar
+    this.router.post(
+      "/multiple-upload",
+      uploader("IMG", "/image").array("gambar", 3), // angka 3 pada array itu maximal file 3 sekaligus
+      this.sampleController.addMultipleImage
+    );
   }
 
   getRouter(): Router {
