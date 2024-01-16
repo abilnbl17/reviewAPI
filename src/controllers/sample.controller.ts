@@ -26,6 +26,8 @@ export class SampleController {
   async addMultipleImage(req: Request, res: Response) {
     try {
       console.log(req.files);
+
+      return res.status(200).send(`files successfully uploaded`);
     } catch (error: any) {
       console.log(error);
       return res.status(500).send(error);
