@@ -31,7 +31,7 @@ export class SampleController {
     try {
       console.log(req.files);
 
-      return res.status(200).send(`files successfully uploaded`);
+      return res.status(200).send(`Upload multiple files success`);
     } catch (error: any) {
       console.log(error);
       return res.status(500).send(error);

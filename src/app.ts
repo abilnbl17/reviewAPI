@@ -11,11 +11,12 @@ import cors from "cors";
 import { SampleRouter } from "./routers/sample.router";
 import { AuthRouter } from "./routers/auth.router";
 import { redisClient } from "./helpers/redis";
+import { PostRouter } from "./routers/posts.router";
 
 const PORT = 7070;
 
 export default class App {
-  private app: Express;
+  readonly app: Express;
 
   constructor() {
     this.app = express();
@@ -34,9 +35,14 @@ export default class App {
   private routes(): void {
     const sampleRouter = new SampleRouter();
     const authRouter = new AuthRouter();
+    const postRouter = new PostRouter();
 
+    this.app.get("/", async (req: Request, res: Response) => {
+      return res.status(200).send("<h1>Welcome to Free Blog</h1>");
+    });
     this.app.use("/samples", sampleRouter.getRouter());
     this.app.use("/auth", authRouter.getRouter());
+    this.app.use("/posts", postRouter.getRouter());
   }
 
   // Define error handling
