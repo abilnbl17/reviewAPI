@@ -1,5 +1,8 @@
 import { Request, Response } from "express";
 import { transporter } from "../helpers/nodemailer";
+import { join } from "path";
+import fs from "fs";
+import handlebars from "handlebars";
 
 export class SampleController {
   async getSample(req: Request, res: Response) {
@@ -37,11 +40,17 @@ export class SampleController {
 
   async sendMail(req: Request, res: Response) {
     try {
+      // mendefinisikan lokasi template dan membacanya dengan fs
+      const templateSource = fs.readFileSync(
+        join(__dirname, "../templates/mail.hbs"),
+        "utf-8"
+      );
+      const compiledTemplate = handlebars.compile(templateSource);
       await transporter.sendMail({
         from: "Review API Mailer",
-        to: req.body.Mailer,
+        to: req.body.email,
         subject: "Welcome to Mailer",
-        html: "<h1> Thank you </h1>",
+        html: compiledTemplate({ name: req.body.email.split("@")[0] }),
       });
       return res.status(200).send("Send email success");
     } catch (error: any) {
