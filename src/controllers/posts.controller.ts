@@ -1,7 +1,7 @@
 import { NextFunction, Request, Response } from "express";
 import axios from "axios";
 
-export class postsController {
+export class PostsController {
   async getPosts(req: Request, res: Response, next: NextFunction) {
     try {
       const get = await axios.get("https://jsonplaceholder.typicode.com/posts");
