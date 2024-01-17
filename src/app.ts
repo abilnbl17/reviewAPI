@@ -10,6 +10,7 @@ import express, {
 import cors from "cors";
 import { SampleRouter } from "./routers/sample.router";
 import { AuthRouter } from "./routers/auth.router";
+import { redisClient } from "./helpers/redis";
 
 const PORT = 7070;
 
@@ -49,7 +50,8 @@ export default class App {
   }
 
   //untuk start app PORT atau localhost yang sudah di SetUp
-  public start(): void {
+  public async start(): Promise<void> {
+    await redisClient.connect(); // cara menggunakan diconnecting terlebih dulu. Connect to redis
     this.app.listen(PORT, () => {
       console.log(`API running : http://localhost:${PORT}/`);
     });
